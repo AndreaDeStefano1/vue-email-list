@@ -4,13 +4,14 @@
 // generare 10 indirizzi email e stamparli in pagina all’interno di una lista.
 
 
-console.log('ciao')
+
 
 const app = new Vue({
   el: '#app',
 
   data:{
     mailList: [],
+    loading: true
   },
   mounted() {
     for (let i = 0; i < 10; i++) {
@@ -18,10 +19,11 @@ const app = new Vue({
       .then((res) => {
        
         this.mailList.push(res.data.response);
+        if(this.mailList.length == 10) this.loading = false;
       })
       
       
-    }
+    };
 
   }
  
